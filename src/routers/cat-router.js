@@ -1,4 +1,7 @@
 import express from "express";
+import cuid from 'cuid';
+import validateSchema from '../schema-validation.js';
+import catSchema from './cat-schema.js';
 
 const router = express.Router();
 
@@ -29,5 +32,17 @@ let cats = [
 router.get("/api/cats", (req, res) => {
   res.status(200).json(cats); // how to respond to get requests. The 200 is the status code and the 'cats' is the body
 });
+
+router.post("/api/cats", validateSchema(catSchema), (req, res) => {
+  const cat = {
+    id: cuid(),
+    name: req.validatedBody.name,
+    size: req.validatedBody.size,
+    mood: req.validatedBody.mood,
+    imageLocation: req.validatedBody.imageLocation
+  }
+  cats.push(cat);
+  res.status(201).json(cat) //sets the response status to be a 201 and the body to be 'cat'?
+})
 
 export default router;

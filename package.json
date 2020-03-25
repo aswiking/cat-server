@@ -12,6 +12,7 @@
   "type": "module",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "cuid": "^2.1.8",
     "express": "^4.17.1"
   }
 }
