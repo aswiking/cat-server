@@ -7,7 +7,7 @@ const catSchema = Joi.object({
     .required(),
   size: Joi.string().required(),
   mood: Joi.string().required(),
-  imageLocation: Joi.string().min(1)
+  imageLocation: Joi.string().allow("").optional()
 });
 
 export default catSchema;
