@@ -9,22 +9,22 @@ let cats = [
   {
     id: "1",
     name: "Jeff",
-    size: "Chonk",
-    mood: "Lazy",
+    size: "chonk",
+    mood: "lazy",
     imageLocation: "https://i.redd.it/i16yz1oooea21.jpg"
   },
   {
     id: "2",
     name: "Susu",
-    size: "Smol",
-    mood: "Friend",
+    size: "smol",
+    mood: "friend",
     imageLocation: "https://i.ibb.co/hZvFjRn/Susu.jpg"
   },
   {
     id: "3",
     name: "Saga",
-    size: "Chonk",
-    mood: "Grumpy",
+    size: "chonk",
+    mood: "grumpy",
     imageLocation: "https://i.ibb.co/z6CG7nG/saga.jpg"
   }
 ];
@@ -70,16 +70,6 @@ router.put("/api/cats/:id", validateSchema(catSchema), (req, res) => {
   }
 
   cats[index] = updatedCat;
-
-  /*cats.map(cat => { // was creating a new array, not changing the existing 'cats' array?
-    if (req.params.id === cat.id) {
-      console.log(updatedCat)
-      return updatedCat;
-    } else {
-      console.log(cat)
-      return cat;
-    }
-  });*/
 
   res.status(200).json(updatedCat);
 });
