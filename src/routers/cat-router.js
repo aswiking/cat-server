@@ -72,6 +72,21 @@ router.put("/api/cats/:id", validateSchema(catSchema), (req, res) => {
   cats[index] = updatedCat;
 
   res.status(200).json(updatedCat);
-});
+}
+);
+
+router.delete("/api/cats/:id", (req, res) => {
+
+  if (!cats.find(cat => cat.id === req.params.id)) {
+    throw {
+      status: 404,
+      messages: 'There is no cat with this ID'
+    }
+  }
+
+cats = cats.filter(cat => cat.id !== req.params.id);
+res.status(204).send();
+
+})
 
 export default router;
